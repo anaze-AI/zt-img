@@ -1,0 +1,19 @@
+[
+  {
+    "id": "ceb20c4a-cc4a-45e3-a9bc-eeef9091d72d",
+    "scriptName": "特殊状态栏美化-SillyTavern",
+    "findRegex": "/<special_status>\\s*([\\s\\S]*?)<\\/special_status>/gi",
+    "replaceString": "\n```html\n<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n<title>特殊状态栏</title>\n</head>\n<body>\n\n<div class=\"cyber-safari-cyan\" style=\"margin:4px 0;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',sans-serif;\"><div class=\"csc-stream-wrap\"><div class=\"csc-inner-shell\"><div class=\"csc-toolbar\"><div class=\"csc-tabs-shelf\"></div></div><div class=\"csc-panel-content\"></div></div></div></div><style>.csc-stream-wrap{padding:2px;border-radius:10px;background:linear-gradient(270deg,#001a1a,#00ffcc,#0088ff,#00ffcc,#001a1a);background-size:400% 400%;animation:cscFlow 4s ease-in-out infinite;box-shadow:0 0 8px rgba(0,255,204,0.3);box-sizing:border-box;overflow:hidden}.csc-inner-shell{background:#000d0d;border-radius:8px;overflow:hidden}.csc-toolbar{padding:6px 10px 0 10px;background:#000808;border-bottom:1px solid rgba(0,255,204,0.25);user-select:none}.csc-tabs-shelf{display:flex;gap:4px;align-items:flex-end}.csc-tab{border:none;background:transparent;padding:4px 14px;border-radius:6px 6px 0 0;font-size:0.75em;font-weight:600;color:#5a9999;cursor:pointer;transition:all 0.15s ease;outline:none;position:relative;margin-bottom:-1px}.csc-tab:hover{color:#e6fafa;background:rgba(0,255,204,0.1)}.csc-tab.active{background:#081a1a;color:#00ffcc;text-shadow:0 0 8px rgba(0,255,204,0.6);border-top:2px solid #00ffcc;border-left:1px solid rgba(0,255,204,0.25);border-right:1px solid rgba(0,255,204,0.25);border-bottom:1px solid #081a1a;box-shadow:0 -2px 8px rgba(0,255,204,0.15)}.csc-panel-content{padding:12px 16px;max-height:160px;overflow-y:auto;background:radial-gradient(ellipse at center,#081a1a,#000808);color:#e6fafa;font-size:0.85em;line-height:1.7;white-space:pre-wrap;word-break:break-word;word-wrap:break-word;text-shadow:0 0 2px rgba(0,255,204,0.15);scrollbar-width:thin;scrollbar-color:#00ffcc #000808}.csc-panel-content::-webkit-scrollbar{width:5px}.csc-panel-content::-webkit-scrollbar-thumb{background:#00ffcc;border-radius:4px}.csc-panel-content::-webkit-scrollbar-track{background:#000808}@keyframes cscFlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}</style><script>(function(){let raw=`$1`;let panels=[];let r=/\\[(\\d+)\\]([\\s\\S]*?)\\[\\/\\1\\]/g;let m;while(m=r.exec(raw)){panels.push({id:m[1],body:m[2].trim()})}let all=document.querySelectorAll('.cyber-safari-cyan');let root=all[all.length-1];let tabs=root.querySelector('.csc-tabs-shelf');let content=root.querySelector('.csc-panel-content');let bar=root.querySelector('.csc-toolbar');if(panels.length===0){content.innerHTML=raw.trim();bar.style.display='none';return}panels.forEach((item,index)=>{let p=document.createElement('div');p.style.display=index===0?'block':'none';p.innerHTML=item.body;content.appendChild(p);let b=document.createElement('button');b.className='csc-tab'+(index===0?' active':'');b.textContent='State '+item.id;b.onclick=()=>{content.querySelectorAll('div').forEach(el=>el.style.display='none');p.style.display='block';tabs.querySelectorAll('.csc-tab').forEach(el=>el.classList.remove('active'));b.classList.add('active')};tabs.appendChild(b)});if(panels.length<=1){bar.style.display='none'}})();</script>\n\n</body>\n</html>\n```\n",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": false,
+    "substituteRegex": 1,
+    "minDepth": null,
+    "maxDepth": 5
+  }
+]
